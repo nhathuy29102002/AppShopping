@@ -1,7 +1,6 @@
-import PropTypes from 'prop-types';
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Image, StyleSheet, View } from 'react-native';
-
 import { useTranslation } from 'react-i18next';
 
 import { Button, Pressable, SaveCard, Text } from '~/components';
@@ -12,13 +11,10 @@ import { getPercentPriceReduction, moneyFormat } from '~/utils';
 const ITEM_WIDTH = SCREEN_WIDTH * 0.5 - 4;
 const IMAGE_SIZE = ITEM_WIDTH;
 
-export const ProductItem = (props) => {
+export const ProductItem = ({ data, onDetail, onAddToCart }) => {
   const { t } = useTranslation();
-  const { data, onDetail, onAddToCart } = props;
 
-  const saveMoney = () => {
-    return data.priceOld - data.price;
-  };
+  const saveMoney = () => data.priceOld - data.price;
 
   return (
     <Pressable onPress={onDetail} style={styles.container}>
@@ -29,10 +25,12 @@ export const ProductItem = (props) => {
           {data?.name}
         </Text>
       </View>
+
       <View>
         <Text style={styles.price}>
           {data?.price && moneyFormat(data?.price)}
         </Text>
+
         <Text>
           <Text style={styles.priceOld}>
             {data?.priceOld && moneyFormat(data?.priceOld)}
@@ -41,17 +39,24 @@ export const ProductItem = (props) => {
             {getPercentPriceReduction(data?.price, data?.priceOld)}
           </Text>
         </Text>
+
         <Button
           onPress={onAddToCart}
           block
-          size='small'
-          variant='outline'
-          title={t('aadToCart')}
+          size="small"
+          variant="outline"
+          title={t('addToCart')} // sửa nếu key thật là 'aadToCart' thì đổi lại
           style={styles.button}
         />
       </View>
     </Pressable>
   );
+};
+
+ProductItem.propTypes = {
+  data: PropTypes.object.isRequired,
+  onDetail: PropTypes.func.isRequired,
+  onAddToCart: PropTypes.func.isRequired,
 };
 
 const styles = StyleSheet.create({
@@ -84,14 +89,10 @@ const styles = StyleSheet.create({
     textDecorationLine: 'line-through',
     color: colors.tertiaryText,
   },
-  button: { marginTop: 8 },
+  button: {
+    marginTop: 8,
+  },
   percent: {
     color: colors.error,
   },
 });
-
-ProductItem.propTypes = {
-  data: PropTypes.object,
-  onDetail: PropTypes.func,
-  onAddToCart: PropTypes.func,
-};
