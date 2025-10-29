@@ -155,6 +155,8 @@ export const common = {
   successfully: 'Successfully',
 
   noItemsInCart: 'No items in cart',
+  orderSuccessMessage: 'Order success',
+  orderFailedMessage: 'Order failed',
   buyNow: 'Buy now',
   pleaseUpdateYourAddress: 'Please update your address',
   reply: 'Reply',

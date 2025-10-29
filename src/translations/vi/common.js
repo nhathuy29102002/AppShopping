@@ -155,6 +155,8 @@ export const common = {
   successfully: 'Thành công',
 
   noItemsInCart: 'Bạn chưa có sản phẩm nào trong giỏ hàng',
+  orderSuccessMessage: 'Đặt hàng thành công',
+  orderFailedMessage: 'Đặt hàng thất bại',
   buyNow: 'Mua ngay',
   pleaseUpdateYourAddress: 'Vui lòng cập nhật địa chỉ',
   reply: 'Phản hồi',
