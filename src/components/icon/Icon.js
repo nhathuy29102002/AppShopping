@@ -38,7 +38,7 @@ export const Icon = (props) => {
 Icon.propTypes = {
   name: PropTypes.string,
   size: PropTypes.oneOfType([
-    PropTypes.oneOf(['small', 'medium', 'large']),
+    PropTypes.oneOf(['xSmall','small', 'medium', 'large']),
     PropTypes.number,
   ]),
   color: PropTypes.string,
